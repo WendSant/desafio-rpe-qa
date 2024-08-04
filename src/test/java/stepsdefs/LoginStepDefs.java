@@ -34,10 +34,10 @@ public class LoginStepDefs {
 
     }
 
-    @Given("Eu digitei um usuario e senha validos")
-    public void digitado_um_usuario_e_senha_validos() {
-        login.enterUsername("admin");
-        login.enterPassword("admin");
+    @Given("Digitando o login valido: {string} e senha: {string}")
+    public void digitado_um_usuario_e_senha_validos(String user, String password) {
+        login.enterUsername(user);
+        login.enterPassword(password);
     }
 
     @When("Eu clico no botao de login escrito Sign in")
@@ -45,9 +45,9 @@ public class LoginStepDefs {
         login.clickLoginButton();
     }
 
-    @Then("Eu devo ser redirecionado para dentro da plataforma")
-    public void checa_redirecionamento_apos_login() {
-        Assert.assertTrue(login.getUrlAtual().contains("/desafioqa/inicio"));
+    @Then("Eu verifico se a URL contem o redirecionamento correto {string}")
+    public void checa_redirecionamento_apos_login(String url) {
+        Assert.assertTrue(login.getUrlAtual().contains(url));
 
     }
 
