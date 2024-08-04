@@ -18,3 +18,7 @@ Feature: Testes pagina de Login do desafio
       | admin         | 123           | Credenciais inválidas |
       | admin         | teste         | Credenciais inválidas |
       | administrador | administrador | Credenciais inválidas |
+
+  Scenario: Validando se pagina de forgot password existe
+    Given Clicando no botao de Forgot Password
+    Then Sou direcionado para pagina de recuperar senha

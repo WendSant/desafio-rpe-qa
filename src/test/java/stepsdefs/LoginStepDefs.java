@@ -6,16 +6,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.pages.Login;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
 import org.testng.Assert;
-
-import java.time.Duration;
 
 public class LoginStepDefs {
 
@@ -44,8 +39,8 @@ public class LoginStepDefs {
 
     @Given("Digitando o login valido: {string} e senha: {string}")
     public void digitado_um_usuario_e_senha_validos(String user, String password) {
-        login.enterUsername(user);
-        login.enterPassword(password);
+        login.digitandoUsername(user);
+        login.digitandoPassword(password);
     }
 
     @When("Eu clico no botao de login escrito Sign in")
@@ -63,8 +58,8 @@ public class LoginStepDefs {
     // ----- Inicio Login sem sucesso com credenciais invalidas -----
     @Given("Digitando o login invalido: {string} e senha: {string}")
     public void digitado_um_usuario_e_senha_invalidos(String user, String password) {
-        login.enterUsername(user);
-        login.enterPassword(password);
+        login.digitandoUsername(user);
+        login.digitandoPassword(password);
     }
 
     @Then("Eu recebo a messagem de erro: {string}")
@@ -72,5 +67,21 @@ public class LoginStepDefs {
         Assert.assertEquals(msg_erro, login.getAlertaCredenciaisInvalidas());
     }
 
+    // ----- Fim Login sem sucesso com credenciais invalidas -----
+
+
+    // ----- Inicio Validando se pagina de forgot password existe -----
+
+    @Given("Clicando no botao de Forgot Password")
+    public void cloque_no_botao_forgot_password() {
+        login.cliqueNoLinkForgotPassword();
+    }
+
+    @Then("Sou direcionado para pagina de recuperar senha")
+    public void direcionado_para_recuperar_senha() {
+        Assert.assertFalse(login.getUrlAtual().contains("/desafioqa/login"));
+
+    }
+    // ----- Fim Validando se pagina de forgot password existe -----
 
 }
