@@ -19,6 +19,14 @@ Feature: Testes pagina de Login do desafio
       | admin         | teste         | Credenciais inválidas |
       | administrador | administrador | Credenciais inválidas |
 
-  Scenario: Validando se pagina de forgot password existe
+  Scenario: Verificando se pagina de forgot password existe
     Given Clicando no botao de Forgot Password
     Then Sou direcionado para pagina de recuperar senha
+
+  Scenario: Verificando checkbox lembrar
+    Given Digitando o login valido: "admin" e senha: "admin"
+    When Eu clico no botao de login escrito Sign in
+    Then Eu verifico se a URL contem o redirecionamento correto "/desafioqa/inicio"
+    Then Eu clico em Sair
+    Then Eu verifico se a URL contem o redirecionamento correto "/desafioqa/login"
+    Then Eu verifico se os dados de login "admin" e senha: "admin" foram lembrados

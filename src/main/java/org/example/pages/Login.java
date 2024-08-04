@@ -17,14 +17,15 @@ public class Login {
     private By loginButtonElement = By.xpath("//*[@id=\"login-form\"]/footer/button");
     private By forgotPasswordLinkElement = By.linkText("Forgot password?");
     private By invalidLoginAlert = By.xpath("//*[@id=\"login-form\"]/fieldset/section[1]/font/label");
+    private By logoutButtonElement = By.xpath("//*[@id=\"header\"]/div[2]/form/input[1]");
 
     public Login(WebDriver driver) {
         this.driver = driver;
     }
 
     public void digitandoUsername(String username) {
-        WebElement emailInput = driver.findElement(usernameInputElement);
-        emailInput.sendKeys(username);
+        WebElement usernameInput = driver.findElement(usernameInputElement);
+        usernameInput.sendKeys(username);
     }
 
     public void digitandoPassword(String password) {
@@ -35,6 +36,11 @@ public class Login {
     public void cliqueLoginButton() {
         WebElement loginInput = driver.findElement(loginButtonElement);
         loginInput.click();
+    }
+
+    public void cliqueSairButton() {
+        WebElement logoutInput = driver.findElement(logoutButtonElement);
+        logoutInput.click();
     }
 
     public String getUrlAtual(){
@@ -53,6 +59,16 @@ public class Login {
         wait.until(ExpectedConditions.visibilityOfElementLocated(forgotPasswordLinkElement));
         WebElement forgottenPasswordLink = driver.findElement(forgotPasswordLinkElement);
         forgottenPasswordLink.click();
+    }
+
+    public String verificaUsernameVazio(){
+        WebElement usernameInput = driver.findElement(usernameInputElement);
+        return usernameInput.getAttribute("value");
+    }
+
+    public String verificaPasswordVazio(){
+        WebElement passwordInput = driver.findElement(passwordInputElement);
+        return passwordInput.getAttribute("value");
     }
 
 }

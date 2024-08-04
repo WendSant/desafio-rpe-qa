@@ -66,7 +66,6 @@ public class LoginStepDefs {
     public void recebo_mensagem_de_login_invalido(String msg_erro) {
         Assert.assertEquals(msg_erro, login.getAlertaCredenciaisInvalidas());
     }
-
     // ----- Fim Login sem sucesso com credenciais invalidas -----
 
 
@@ -84,4 +83,21 @@ public class LoginStepDefs {
     }
     // ----- Fim Validando se pagina de forgot password existe -----
 
+
+    // ----- INICIO Validando funcionamento do checkbox Lembrar -----
+    @Then("Eu clico em Sair")
+    public void clico_em_sair() {
+       login.cliqueSairButton();
+    }
+
+    @Then("Eu verifico se os dados de login {string} e senha: {string} foram lembrados")
+    public void verifico_se_os_dados_de_login_foram_lembrados(String username, String password) {
+        Assert.assertFalse(
+                login.verificaUsernameVazio().contains(username) &&
+                        login.verificaUsernameVazio().contains(password),"Os dados não foram lembrados corretamente"
+
+
+        );
+    }
+    // ----- FIM Validando funcionamento do checkbox Lembrar -----
 }
