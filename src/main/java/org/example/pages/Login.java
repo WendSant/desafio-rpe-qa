@@ -10,15 +10,15 @@ public class Login {
 
     private By usernameInputElement = By.name("username");
     private By passwordInputElement = By.name("password");
-    private By loginButtonElement = By.xpath("//input[@type='submit']");
+    private By loginButtonElement = By.xpath("//*[@id=\"login-form\"]/footer/button");
 
     public Login(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void enterUsername(String email) {
+    public void enterUsername(String username) {
         WebElement emailInput = driver.findElement(usernameInputElement);
-        emailField.sendKeys(email);
+        emailInput.sendKeys(username);
     }
 
     public void enterPassword(String password) {
@@ -30,5 +30,10 @@ public class Login {
         WebElement loginInput = driver.findElement(loginButtonElement);
         loginInput.click();
     }
+
+    public String getUrlAtual(){
+        return driver.getCurrentUrl();
+    }
+
 
 }
