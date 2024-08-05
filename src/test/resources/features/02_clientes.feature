@@ -1,4 +1,4 @@
-
+@Grupo2
 Feature: Testes de Clientes dentro da plataforma
   Background:
     Given Faço login e estou na pagina de clientes da plataforma

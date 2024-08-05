@@ -1,3 +1,4 @@
+@Grupo1
 Feature: Testes pagina de Login do desafio
   Background:
     Given Estou na pagina de login do desafio

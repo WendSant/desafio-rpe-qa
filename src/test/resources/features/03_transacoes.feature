@@ -1,3 +1,4 @@
+@Grupo3
 Feature: Testes de Clientes dentro da plataforma
   Background:
     Given Faço login e estou na pagina de transações da plataforma
