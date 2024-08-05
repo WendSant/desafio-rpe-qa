@@ -2,9 +2,11 @@ package stepsdefs;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.example.pages.Clientes;
 import org.example.pages.Login;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,6 +21,9 @@ public class LoginStepDefs {
 
     @Before
     public void setup(){
+        if(driver!=null){
+            driver.quit();
+        }
         driver = new ChromeDriver();
     }
 
@@ -37,18 +42,18 @@ public class LoginStepDefs {
 
     }
 
-    @Given("Digitando o login valido: {string} e senha: {string}")
+    @Given("Eu digito o login válido {string} e a senha {string}")
     public void digitado_um_usuario_e_senha_validos(String user, String password) {
         login.digitandoUsername(user);
         login.digitandoPassword(password);
     }
 
-    @When("Eu clico no botao de login escrito Sign in")
+    @When("Eu clico no botão de login escrito Sign in")
     public void clique_no_botao_de_login() {
         login.cliqueLoginButton();
     }
 
-    @Then("Eu verifico se a URL contem o redirecionamento correto {string}")
+    @Then("Eu verifico se a URL contém o redirecionamento correto {string}")
     public void checa_redirecionamento_apos_login(String url) {
         Assert.assertTrue(login.getUrlAtual().contains(url));
 
@@ -56,7 +61,7 @@ public class LoginStepDefs {
     // ----- Fim Login com sucesso com credenciais validas -----
 
     // ----- Inicio Login sem sucesso com credenciais invalidas -----
-    @Given("Digitando o login invalido: {string} e senha: {string}")
+    @Given("Eu digito o login invalido: {string} e senha: {string}")
     public void digitado_um_usuario_e_senha_invalidos(String user, String password) {
         login.digitandoUsername(user);
         login.digitandoPassword(password);
@@ -90,11 +95,11 @@ public class LoginStepDefs {
        login.cliqueSairButton();
     }
 
-    @Then("Eu verifico se os dados de login {string} e senha: {string} foram lembrados")
+    @And("Eu verifico se os dados de login {string} e senha {string} foram lembrados")
     public void verifico_se_os_dados_de_login_foram_lembrados(String username, String password) {
-        Assert.assertFalse(
+        Assert.assertTrue(
                 login.verificaUsernameVazio().contains(username) &&
-                        login.verificaUsernameVazio().contains(password),"Os dados não foram lembrados corretamente"
+                        login.verificaPasswordVazio().contains(password),"Os dados não foram lembrados corretamente"
 
 
         );
