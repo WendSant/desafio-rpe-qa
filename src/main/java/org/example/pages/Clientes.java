@@ -18,7 +18,6 @@ public class Clientes {
     private By menuIcon = By.cssSelector("a[title='QA']");
     private By clientesItem = By.cssSelector("a[title='Clientes']");;
     private By incluirItem = By.xpath("//*[@id=\"left-panel\"]/nav/ul[2]/li/ul/li[1]/ul/li[1]/a");
-    private By listarClientes = By.xpath("//*[@id=\"left-panel\"]/nav/ul[2]/li/ul/li[1]/ul/li[2]/a");
     private By campoNomeClienteItem = By.id("nome");
     private By campoCPFClienteItem = By.id("cpf");
     private By selectStatusClienteItem = By.id("status");
@@ -38,10 +37,6 @@ public class Clientes {
 
     public void movendoOMouseParaOItemClientes(){
         seleniumUtils.movendoParaOElemento(clientesItem);
-    }
-
-    public void movendoOMouseParaOItemListarClientes(){
-        seleniumUtils.movendoParaOElemento(listarClientes);
     }
 
     public void clique_em_incluir_clientes(){

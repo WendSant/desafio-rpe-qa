@@ -74,7 +74,6 @@ public class ClientesStepDefs {
             String cpf = row.get("cpf");
             String status =row.get("ativo");
             String saldo = row.get("saldo");
-
             clientes.preencher_todos_os_campos_cliente(nome, cpf, status, saldo);
         }
     }
