@@ -5,6 +5,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.example.pages.Clientes;
 import org.example.pages.Login;
 import org.openqa.selenium.Dimension;
@@ -45,7 +46,7 @@ public class ClientesStepDefs {
         login.cliqueLoginButton();
     }
 
-    @Given("Que estou na pagina inicial da plataforma com a url {string}")
+    @Given("Eu estou na pagina da plataforma com a url {string}")
     public void pagina_de_login_do_desafio(String url) {
         Assert.assertTrue(login.getUrlAtual().contains(url));
     }
@@ -83,4 +84,23 @@ public class ClientesStepDefs {
         clientes.clicar_em_salvar_cliente();
     }
 
+    @And("Eu verifico o alerta de criação")
+    public void verifica_criacao(){
+        Assert.assertTrue(clientes.verificaAlertaCriarCliente());
+    }
+
+    @When("Eu clico em limpar")
+    public void cliqueLimparCampos(){
+        clientes.clicar_em_limpar_campos();
+    }
+
+    @Then("Os campos devem estar vazios")
+    public void validar_campos_vazios(){
+        Assert.assertTrue(clientes.verificaValorNomeCliente().isEmpty());
+    }
+
+    @When("Eu clico em cancelar")
+    public void cliqueCancelar(){
+        clientes.clicar_em_cancelar_incluir_cliente();
+    }
 }

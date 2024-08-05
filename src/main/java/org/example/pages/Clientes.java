@@ -18,12 +18,15 @@ public class Clientes {
     private By menuIcon = By.cssSelector("a[title='QA']");
     private By clientesItem = By.cssSelector("a[title='Clientes']");;
     private By incluirItem = By.xpath("//*[@id=\"left-panel\"]/nav/ul[2]/li/ul/li[1]/ul/li[1]/a");
+    private By listarClientes = By.xpath("//*[@id=\"left-panel\"]/nav/ul[2]/li/ul/li[1]/ul/li[2]/a");
     private By campoNomeClienteItem = By.id("nome");
     private By campoCPFClienteItem = By.id("cpf");
     private By selectStatusClienteItem = By.id("status");
     private By camposaldoClienteItem = By.id("saldoCliente");
     private By botaoSalvarCliente = By.id("botaoSalvar");
-
+    private By botaoLimparCampos = By.id("botaoLimpar");
+    private By botaoCancelarIncluirCliente = By.xpath("//*[@id=\"formIncluirAlterarCliente\"]/div/div/div/div/div/a");
+    private By alertaClienteCriado = By.xpath("//*[@id=\"alertMessage\"]");
     public Clientes(WebDriver driver) {
         this.driver = driver;
         this.seleniumUtils = new SeleniumUtils(driver);
@@ -35,6 +38,10 @@ public class Clientes {
 
     public void movendoOMouseParaOItemClientes(){
         seleniumUtils.movendoParaOElemento(clientesItem);
+    }
+
+    public void movendoOMouseParaOItemListarClientes(){
+        seleniumUtils.movendoParaOElemento(listarClientes);
     }
 
     public void clique_em_incluir_clientes(){
@@ -69,5 +76,24 @@ public class Clientes {
 
     public void clicar_em_salvar_cliente(){
         seleniumUtils.clicandoEmAlgumElemento(botaoSalvarCliente);
+    }
+
+    public void clicar_em_limpar_campos(){
+        seleniumUtils.clicandoEmAlgumElemento(botaoLimparCampos);
+    }
+
+    public void clicar_em_cancelar_incluir_cliente(){
+        seleniumUtils.clicandoEmAlgumElemento(botaoCancelarIncluirCliente);
+    }
+
+    public String verificaValorNomeCliente(){
+        WebElement usernameInput = driver.findElement(campoNomeClienteItem);
+        return usernameInput.getAttribute("value");
+    }
+
+    public boolean verificaAlertaCriarCliente(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement alertaCli = wait.until(ExpectedConditions.visibilityOfElementLocated(alertaClienteCriado));
+        return alertaCli.isDisplayed();
     }
 }
