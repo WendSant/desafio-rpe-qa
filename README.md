@@ -1,7 +1,7 @@
 # Documentação e Testes da plataforma
 
 ## Descrição
-Repositorio contem a documentação e alguns testes automatizados.
+Repositorio contem a documentação e a aplicação com alguns testes automatizados.
 
 ## Requisitos e dependencias do projeto:
 
