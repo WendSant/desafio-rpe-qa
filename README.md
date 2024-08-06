@@ -10,6 +10,7 @@ Repositorio contem a documentação e a aplicação com alguns testes automatiza
 - **Selenium 1.7.32**
 - **Cucumber 6.11.0**
 - **TestNG 7.7.0**
+- **Navegador Google Chrome 127.0.6533.89**
 
 ## Casos de testes implementados:
 ### Cenário: Login
