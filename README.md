@@ -11,6 +11,20 @@ Repositorio contem a documentação e a aplicação com alguns testes automatiza
 - **Cucumber 6.11.0**
 - **TestNG 7.7.0**
 
+## Casos de testes implementados:
+### Cenário: Login
+- **Login com sucesso com credenciais validas**
+- **Login sem sucesso com credenciais invalidas**
+- **Verificando se pagina de forgot password existe**
+- **Verificando checkbox lembrar**
+### Cenário: Clientes
+- **Incluindo um novo cliente**
+- **Incluindo um novo cliente com status de inativado**
+- **Validando o botão limpar campos na tela de incluir clientes**
+- **Validando o botão cancelar na tela de incluir clientes**
+### Cenário: Transação
+- **Incluindo nova transação**
+
 ## Passo a Passo
 
 ### Clone o repositorio
